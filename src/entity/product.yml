@@ -1,0 +1,65 @@
+components:
+  schemas:
+    Product:
+      type: object
+      required:
+        - description
+        - price
+        - quantity
+      properties:
+        description:
+          type: string
+          description: Product's detailed description
+        price:
+          type: number
+          description: Product's price in BRL
+        quantity:
+          type: number
+          description: Quantity of this product in stocks
+      example:
+        description: Placa de Vídeo RTX 3060 1-Click OC PCI-e Galax, 8 GB GDDR6, 128BIT - 36NSL8MD6OCC
+        price: 1499.99
+        quantity: 1
+    ProductCreatedResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          description: A message pointing the product has been registered
+          example: Product registered
+    ProductCreationFailResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          description: A message pointing there's pending properties to register a new product
+          example: Invalid inputs
+    ProductFoundResponse:
+      allOf:
+        - $ref: "#components/schemas/Product"
+        - type: object
+          required:
+            - id
+          properties:
+            id:
+              type: number
+              description: The current identifier to be saved in the database
+          example:
+            id: 1
+            description: Placa de Vídeo RTX 3060 1-Click OC PCI-e Galax, 8 GB GDDR6, 128BIT - 36NSL8MD6OCC
+            price: 1499.99
+            quantity: 1
+    ProductSearchFailResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          description: A message pointing the identifier is omitted or invalid
+          example: Invalid inputs
+    ProductNotFoundResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          description: A message pointing there's no product with the informed identifier
+          example: Product not found

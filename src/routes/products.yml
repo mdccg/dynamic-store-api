@@ -1,0 +1,62 @@
+paths:
+  /products:
+    post:
+      summary: Register a new product
+      tags: [products]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#components/schemas/Product"
+      responses:
+        201:
+          description: Product registered successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  product:
+                    $ref: "#components/schemas/ProductCreatedResponse"
+        400:
+          description: The product's properties received are invalid
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: "#components/schemas/ProductCreationFailResponse"
+  /products/:id:
+    get:
+      summary: Return the product's data by its identifier
+      tags: [products]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#components/schemas/Product"
+      responses:
+        200:
+          description: Product has been found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  product:
+                    $ref: "#components/schemas/ProductFoundResponse"
+        400:
+          description: Invalid ID
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: "#components/schemas/ProductSearchFailResponse"            
+        404:
+          description: Product not found
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: "#components/schemas/ProductNotFoundResponse"
