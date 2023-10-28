@@ -1,6 +1,6 @@
-import { Repository } from 'typeorm';
-import { Product } from '../entity/Product';
+import { ILike, Repository } from 'typeorm';
 import { AppDataSource } from '../data-source';
+import { Product } from '../entity/Product';
 
 export class ProductController {
   private _repo: Repository<Product>;
@@ -23,5 +23,13 @@ export class ProductController {
   async findProductById(id: number): Promise<Product> {
     const product = await this._repo.findOneBy({ id });
     return product;
+  }
+
+  async findProductsByDescription(description: string): Promise<Product[]> {
+    const products = await this._repo.findBy({
+      description: ILike(`%${description}%`),
+    });
+
+    return products;
   }
 }

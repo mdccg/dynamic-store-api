@@ -7,7 +7,7 @@
       "ensure-port-is-free": "npx kill-port 3001",
       "populate": "ts-node src/populate.ts",
       "start": "yarn ensure-port-is-free && ts-node src/server.ts",
-      "dev": "yarn ensure-port-is-free && nodemon --exec yarn start"
+      "dev": "yarn ensure-port-is-free && nodemon --config nodemon.json --exec yarn start"
    },
    "devDependencies": {
       "@faker-js/faker": "^8.2.0",

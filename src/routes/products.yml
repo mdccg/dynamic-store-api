@@ -26,16 +26,17 @@ paths:
               schema:
                 type: object
                 $ref: "#components/schemas/ProductCreationFailResponse"
-  /products/:id:
+  /products/{id}:
     get:
       summary: Return the product's data by its identifier
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description: Numeric ID of the product to get
       tags: [products]
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: "#components/schemas/Product"
       responses:
         200:
           description: Product has been found
@@ -60,3 +61,29 @@ paths:
               schema:
                 type: object
                 $ref: "#components/schemas/ProductNotFoundResponse"
+  /products/description/{description}:
+    get:
+      summary: Return products by their description
+      parameters:
+        - in: path
+          name: description
+          schema:
+            type: string
+          required: true
+          description: Description of the product to get
+      tags: [products]
+      responses:
+        200:
+          description: The description is valid. It doesn't mean any products have been found, so the return is an empty array
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: "#components/schemas/ProductDescriptionSearchFoundResponse"
+        400:
+          description: Empty or invalid description provided
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: "#components/schemas/ProductDescriptionSearchFailResponse"

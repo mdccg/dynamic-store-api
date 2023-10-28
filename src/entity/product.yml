@@ -63,3 +63,34 @@ components:
           type: string
           description: A message pointing there's no product with the informed identifier
           example: Product not found
+    ProductDescriptionSearchFoundResponse:
+      type: object
+      properties:
+        products:
+          type: array
+          items:
+            $ref: "#components/schemas/Product"
+            type: object
+          example:
+            [
+              {
+                "id": 1,
+                "description": "Placa de Vídeo RTX 3060 1-Click OC PCI-e Galax, 8 GB GDDR6, 128BIT - 36NSL8MD6OCC",
+                "price": 1499.99,
+                "quantity": 1
+              },
+              {
+                "id": 2,
+                "description": "Liquidificador Mondial L99-FR Turbo Power Vermelho 500W com 3 Velocidades",
+                "price": 599.99,
+                "quantity": 4
+              }
+            ]
+    ProductDescriptionSearchFailResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          description: A message pointing that description should be informed
+          example: Invalid inputs
+    

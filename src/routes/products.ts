@@ -33,3 +33,15 @@ productsRouter.get('/:id', async (req, res) => {
 
   res.json({ product });
 });
+
+productsRouter.get('/description/:description', async (req, res) => {
+  const { description } = req.params;
+
+  if (!description) {
+    return res.status(400).json({ message: 'Invalid inputs' });
+  }
+
+  const products = await productController.findProductsByDescription(description);
+
+  res.json({ products });
+});
