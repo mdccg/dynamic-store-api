@@ -16,7 +16,7 @@ Este app consiste em uma API que simula o funcionamento de uma loja fictícia. O
 
 Este foi o quarto repositório de código apresentado no [Curso Superior de TSI do IFMS](https://www.ifms.edu.br/campi/campus-aquidauana/cursos/graduacao/sistemas-para-internet/sistemas-para-internet) como requisito para obtenção da nota parcial das atividades da unidade curricular Web Services.
 
-| [&larr; Repositório anterior](https://github.com/mdccg/swagger-ui-demo) | [Próximo repositório &rarr;](#) |
+| [&larr; Repositório anterior](https://github.com/mdccg/swagger-ui-demo) | [Próximo repositório &rarr;](https://github.com/mdccg/auth-via-hash-and-salt) |
 |-|-|
 
 ## Pilha de tecnologia
